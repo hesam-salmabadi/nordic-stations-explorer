@@ -1,0 +1,9 @@
+The station metadata in this folder (stations.geojson) is licensed under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+The overlays derived from other datasets keep the licence of their source:
+- worldcover/: ESA WorldCover 2021 v200 (Zanaga et al., 2022), CC BY 4.0
+- permafrost.png: Obu et al. (2019), ESA CCI Permafrost / PANGAEA
+- koppen.png: Köppen-Geiger 1991-2020 (Beck et al., 2023), CC BY 4.0
+- biomes.geojson: RESOLVE Ecoregions 2017 (Dinerstein et al., 2017), CC BY 4.0
