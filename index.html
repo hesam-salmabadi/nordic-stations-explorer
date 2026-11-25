@@ -220,17 +220,16 @@ Promise.all([get("data/stations.geojson"), get("data/worldcover.json"),
     sel.appendChild(og);
   });
   const all = st.getBounds();
-  map.fitBounds(all, { padding: [20, 20] });
   sel.addEventListener("change", () => {
     if (!sel.value) return map.fitBounds(all, { padding: [20, 20] });
     const pts = Object.values(groups).find((g) => g[sel.value])[sel.value];
     map.fitBounds(L.latLngBounds(pts).pad(0.6), { maxZoom: 15 });
   });
-  // A shared link opens on its site: index.html#Bylot%20Island
+  // A shared link opens on its site (index.html#Bylot%20Island), else the network.
+  // One fit only: a second fit during the first one's animation is dropped.
   const hash = decodeURIComponent(location.hash.slice(1));
-  if (hash && [...sel.options].some((o) => o.value === hash)) {
-    sel.value = hash; sel.dispatchEvent(new Event("change"));
-  }
+  sel.value = [...sel.options].some((o) => o.value === hash) ? hash : "";
+  sel.dispatchEvent(new Event("change"));
   sel.addEventListener("change", () => history.replaceState(null, "", sel.value ? "#" + encodeURIComponent(sel.value) : "#"));
 }).catch((e) => {
   console.error(e);
